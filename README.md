@@ -1,23 +1,27 @@
 # RUSHB - A basic protocol simulation
 
-<img src="https://storage.googleapis.com/starfighter-public-bucket/wiki_images/resume_photos/RUSHB/00001.jpg"
+<img src="https://storage.googleapis.com/starfighter-public-bucket/wiki_images/resume_photos/RUSHB/pic2.jpg"
     width="700px">
 
-When applying for jobs, one of the first impressions you want to give is
-"Yes, I can read a specification, and implement said spec, according to (some) 
-style guide".
+## What is this?
 
-## Aims
+The source files you see before you were part of a university assignment for
+    implementing TCP-like reliable transmission of information.
 
-This repo contains the implementation for a computer networking assignment I 
-did in University. The purpose of said assignment was:
+It is a simple "stop-and-wait" protocol that implements:
+- ACK / NAK packets
+- Resend-on-timeout (static 5-second timeout)
+- sequence number tracking
+- acknowledgement number tracking
+- flag and checksum validation
 
-1. Get familiar with how to read RFC documents.
-2. Get familiar with how to implement the functionality of an RFC (practicality
-    wasn't the aim, hence we were free to implement such a protocol in `Python`).
-3. If we hadn't realised in CSSE2310 (when Joel was teaching it that is),
-    understand and embrace the idea of **your code MUST work** (no points for
-    effort, only functionality).
+This can be explained visually using this FSM from the book **Computer Networking - 
+    A top down approach - 7th edition**:
+
+<img src="https://storage.googleapis.com/starfighter-public-bucket/wiki_images/resume_photos/RUSHB/fsm.PNG"
+    width="700px">
+
+Except unlike this receiver FSM, we also implement a static timeout.
 
 ## How do I use this thing?
 To see how the software works, do the following:
@@ -94,13 +98,3 @@ The available modes, `[-m mode]`, are as follows:
 ### How do I know if your output is correct?
 We were provided with the files seen in the `expected_output` folder as a means
     to verify our implementations' output.
-
-## How long did this take to write?
-The following files were written and tested in about ~1 week (5 working days).
-
-- `RUSHBSvr.py`
-- `RUSHBMultiprocessing.py`
-- `RUSHBPacket.py`
-- `RUSHBHelpers.py`
-
-All other files were provided by the course for this specific assignment.
